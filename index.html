@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GigFloww Navbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fa;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #d7f3fb06 0%,#6a11cb 50%, #1421b9 100%);
+      color: white;
+      padding: 15px 30px;
+      position: relative;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .menu li {
+      position: relative;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 160px;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .dropdown a {
+      color: #333;
+      padding: 10px 15px;
+      display: block;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s ease;
+    }
+
+    .dropdown a:hover {
+      background: #f0f4f8;
+    }
+
+    .menu li:hover .dropdown {
+      display: block;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        background: linear-gradient(85deg,#6a11cb 50%, #105bd4 90%);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 15px 20px;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+        <svg width="200" height="50" viewBox="0 0 300 60">
+            <defs>
+              <linearGradient id="saasGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#6a11cb"></stop>
+                <stop offset="100%" stop-color="#2575fc"></stop>
+              </linearGradient>
+            </defs>
+            <text x="0" y="40" font-size="36" font-family="Segoe UI, sans-serif" fill="url(#saasGradient)" font-weight="600">
+              GigFloww
+            </text>
+          </svg>          
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="menu" id="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">Gigs ▾</a>
+        <ul class="dropdown">
+          <li><a href="#">Graphic Design</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Marketing</a></li>
+        </ul>
+      </li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
